@@ -1,0 +1,505 @@
+
+/* -----------------
+fonts 
+--------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+/* --------------
+variables 
+-------------- */
+
+:root{
+    --main-color:#eaa023;
+    --clr-dark:#0c1023;
+    --clr-dark-light:#191f3a;
+    --clr-white:#ffffff;
+    --clr-white-light:#c8c8c8;
+    --shadow:0 0 15px rgba(0,0,0,0.25);
+    --cursive-font: 'Dancing Script', cursive;
+    scroll-behavior: smooth;   
+}
+
+/* -----------
+configuraciones globales 
+----------*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;  
+}
+
+::before,
+::after{
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    /* background-color: red; */
+    color: var(--clr-white-light);
+}
+
+img{
+    vertical-align: middle; /*Centra verticalmente la imagen*/
+    max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+h1{
+    font-weight: 700;
+    color: var(--clr-white);
+}
+
+h2{
+    font-weight: 600;
+    color: var(--clr-white);
+}
+
+h3,
+h4,
+h5,
+h6{
+    font-weight: 500;
+    color: var(--clr-white);
+}
+
+.p{
+    font-size: 16px;
+}
+
+.container{
+    max-width: 1170px;
+    /* background-color: red; */
+    margin: auto; /*Center the container wich is inside another div*/
+}
+
+.row{ /*Organize the elements in one row*/
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.min-vh-100{
+    min-height: 100vh;
+}
+
+.sec-padding{
+    padding: 80px 0;
+}
+
+/* section title */
+
+.section-title{
+    width: 100%;
+    padding: 0 15px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2{
+    font-size: 35px;
+    text-transform: capitalize;
+}
+
+.section-title h2::before{
+    content: attr(data-title);
+    display: block;
+    font-size: 24px;
+    color: var(--main-color);
+    font-family: var(--cursive-font);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+/* Buttons */
+
+.btn{
+    display: inline-block; /*permite definir el ancho y alto del elemento */
+    padding: 10px 30px;
+    background-color:transparent;
+    border-radius: 30px;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--main-color);
+    line-height: 1.5;
+    user-select: none;
+    border: none;
+}
+
+.btn-default{
+    border: 2px solid var(--main-color)
+}
+
+.btn-default:hover{
+    color: var(--clr-white);
+    background-color: var(--main-color);
+}
+
+/* animation keyframes */
+
+/* El siguiente keyframe permite dar el efecto de aumentar y disminuir el tamaño de la imagen de fondo del home*/
+@keyframes zoomInOut{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+}
+
+@keyframes spin01{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+         transform: rotate(360deg);
+    }
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.align-items-center{
+    align-items: center;
+} 
+
+/* ---------------
+header
+-----------------*/
+
+.header{
+    padding: 12px 0; /*12 px arriba y abajo*/
+    /* background-color: var(--clr-dark-light); */
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99; /*Este valor permite que el objeto se superponga sobre los demás por tener una valor alto.*/
+    width: 100%;
+}
+
+/* El fondo del header se oculta */
+.header::before{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--clr-dark-light);
+    box-shadow: var(--shadow);
+    z-index: -1;
+    transition: transform 0.5s ease;
+    transform: translateY(-100%);
+}
+
+/* El fondo del header aparece */
+.header.sticky::before{
+    transform: translateY(0%);
+}
+
+.header .logo{
+    /* background-color: blue; */
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px; /*Define el espacio a la izquierda y la derecha en 15px*/
+}
+
+.header .nav-toggler{ /*Caja del menú*/
+    height: 34px; /*alto de la caja del menú*/
+    width: 44px; /*ancho de la caja del menú*/
+    margin-right: 15px; /*Margen derecho desde el filo de la pantalla*/
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center; /*centrado vertical*/
+    justify-content: center; /*centrado horizontal*/
+}
+
+.header .nav-toggler.active{/*Controla el movimiento de la caja del span en la misma dirección que la caja que contiene la lista de menu*/
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    transition: all 0.5s ease;
+    transform: translateX(-200px); /*Se mueve a la izquierda*/
+}
+
+.header .nav-toggler span{ /*línea dentro de la caja del menú*/
+    height: 2px;
+    width: 30px;
+    display: block;
+    background-color: var(--clr-white); /*Color de la línea formada por el objeto span*/
+    position: relative;
+}
+
+.header .nav-toggler.active span{
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+}
+
+.header .nav-toggler span::before,
+.header .nav-toggler span::after{ /* Esto duplica el span que representa la línea antes y después de la misma*/
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--clr-white);
+}
+
+.header .nav-toggler span::before{
+    transform: translateY(-8px); /*Desplazamiento vertical*/
+}
+
+.header .nav-toggler.active span:before{ /*permite girar el span before para formar una x con el otro span after*/
+    transform: rotate(45deg);
+    transition: transform 0.5s ease;
+}
+
+.header .nav-toggler span::after{
+    transform: translateY(8px);
+}
+
+.header .nav-toggler.active span:after{
+    transform: rotate(135deg);
+    transition: transform 0.5s ease;
+}
+
+.header .nav{ /*Crear una caja al lado derecho de la pantalla que contiene la lista*/
+    position: fixed;  /*el menu tiene su posición normal que sobremonta al resto*/
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 280px;
+    background-color: var(--clr-dark-light);
+    box-shadow: var(--shadow);
+    overflow-y: auto; /*Establece un nuevo contexto de formato de bloque*/
+    padding: 80px 0 40px;
+    transition: transform 0.5s ease;
+    transform: translateX(100%);
+}
+
+.header .nav.open{
+    transform: translateX(0%);
+}
+
+.header .nav ul li a{
+    display: block; /*visualiza un elemento como un elemento de bloque. Inicia una nueva línea*/
+    font-size: 25px;
+    color: var(--clr-white);
+    padding: 10px 30px;
+    text-transform: capitalize;
+    transition: color 0.3s ease; /*Permite que la transición del cambio de color al poner el mouse sobre un elemento tenga un efecto*/
+}
+
+.header .nav ul li a:hover{
+    color: var(--main-color);
+}
+
+/* home-section */
+
+.home-section{
+    position: relative;
+    /*Permite mantener oculto la barra scroll cuando la imagen aumente de tamaño, aplicado por el zoomInOut*/
+    overflow: hidden;
+}
+
+.home-section::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.home-section .home-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/home-bg2.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    z-index: -2;
+    /* El zoomInOut es el keyframe denifinido arriba */
+    animation: zoomInOut 20s ease infinite;
+}
+
+.home-section .min-vh-100{
+    padding: 100px 0;
+}
+
+.home-text{
+    padding: 0 15px;
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.home-text h1{
+    font-family: var(--cursive-font);
+    font-size: 60px;
+    line-height: 75px;
+    margin: 0 0 5px;
+}
+
+.home-text p{
+    margin:0 0 30px;
+    font-weight: 700;
+}
+
+/*------------------------------
+ about section
+ -----------------------------*/
+
+ .about-section{
+    background-color: var(--clr-dark-light);
+ }
+
+ .about-text,
+ .about-img{
+     width: 50%;
+     padding: 15px;
+ }
+
+ .about-text h3{
+     font-size: 30px;
+     text-transform: capitalize;
+     margin-bottom: 15px;
+ }
+
+ .about-text p{
+    margin-bottom: 15px;
+    text-align: justify;
+ }
+
+ .about-text .btn{
+     margin-top: 15px;
+ }
+
+ .about-img img{
+    width: 100%;
+    border-radius: 10px;
+ }
+
+ .about-img .img-box{
+    /* Esto permite que el contenedor pueda modificar su posición de tal forma que sobremonte a la imagen de la sección About  */
+    position: relative;
+    height: 400px;
+    width: 400px;
+    margin: auto;
+ }
+
+ .about-img .img-box::before{
+     content: '';
+     position: absolute;
+     height: 100px;
+     width: 100px;
+     border: 3px solid var(--main-color);
+     left:calc(50% - 50px);
+     top:calc(50% - 50px);
+     animation: spin01 10s linear infinite;
+ }
+
+ .about-img .img-box h3{
+    /* Permite que el texto de la sección about se mantenga delante de la imagen */
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     width: 100%;
+     max-width: 250px;
+     text-align: center;
+     /* mueve a la izquierda y hacia arriba el texto centrándolo en la imagen */
+     transform: translate(-50%,-50%);
+     font-size: 30px;
+     font-family: var(--cursive-font);
+     color: var(--clr-dark);
+     font-weight: bold;
+     text-transform: capitalize;
+ }
+
+ /* --------------------------------
+ services section
+ ------------------------------------ */
+
+ .services-section{
+    background-color: var(--clr-dark);
+}
+
+.services-section .section-title{
+    margin-bottom: 40px;
+}
+
+/* alinea los botones de los servicios horizontalmente centrándolos en el contenedor */
+.services-tabs{
+    padding: 0 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.services-tab-item{
+    font-size: 18px;
+    font-family: inherit;
+    text-transform: capitalize;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    color: var(--clr-white);
+    cursor: pointer;
+    margin: 0 10px 10px;
+    transition: color 0.3s ease;
+}
+
+.services-tab-item.active{
+     color: var(--main-color)
+}
+
+/* aumenta el contenedor del item para que ocupe la mitad de la pantalla y de esa forma tener dos items por fila */
+.services-item{
+    width: 50%;
+    padding: 20px 15px;
+    display: flex; /* permite que los contenedores, en este caso div puedan tratarse como elementos en línea. De esa forma se puede tener el precio y la imagen en la misma línea*/
+    align-items: center;
+    justify-content: space-between;
+}
+
+.services-item-title{
+    display: flex;
+    align-items: center;
+}
+
+.services-item-title img{
+    max-width: 100px;
+    /* margin:0 15px 0 0; */
+    margin-right: 15px;
+}
+
