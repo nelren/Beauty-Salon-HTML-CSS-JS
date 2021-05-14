@@ -451,7 +451,8 @@ header
  ------------------------------------ */
 
  .services-section{
-    background-color: var(--clr-dark);
+    background-color: var(--clr-dark-light);
+    padding-bottom: 60px;
 }
 
 .services-section .section-title{
@@ -477,10 +478,19 @@ header
     cursor: pointer;
     margin: 0 10px 10px;
     transition: color 0.3s ease;
+    display: inline-block;
 }
 
 .services-tab-item.active{
      color: var(--main-color)
+}
+
+.services-tab-content{
+    display: none;
+}
+
+.services-tab-content.active{
+    display: flex;
 }
 
 /* aumenta el contenedor del item para que ocupe la mitad de la pantalla y de esa forma tener dos items por fila */
@@ -490,11 +500,27 @@ header
     display: flex; /* permite que los contenedores, en este caso div puedan tratarse como elementos en línea. De esa forma se puede tener el precio y la imagen en la misma línea*/
     align-items: center;
     justify-content: space-between;
+    position: relative;
+}
+
+.services-item::after{
+    content: '';
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    border-bottom: 2px dashed  var(--clr-white);
+}
+
+.menu-item:nth-last-of-type(2)::after,
+.menu-item:nth-last-of-type(1)::after{
+    border: none;
 }
 
 .services-item-title{
     display: flex;
     align-items: center;
+    max-width: calc(100% - 80px);
 }
 
 .services-item-title img{
@@ -503,3 +529,24 @@ header
     margin-right: 15px;
 }
 
+.services-item-title h3{
+    font-size: 16px;
+    text-transform: capitalize;
+    transition: color 0.3s ease; /*Permite que el color aparezca de difuso a legible en 0.3s*/
+}
+
+.services-item:hover .services-item-title h3{
+    color:var(--main-color);
+}
+
+.services-item-price{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--main-color);
+    transition: color 0.3s ease;
+}
+
+/* Cuando el mouse pase por el contenedor del precio, el color del precio cambiara a blanco */
+.services-item:hover .services-item-price{
+    color: var(--clr-white);
+}

@@ -25,3 +25,20 @@ window.addEventListener("scroll", function(){
     }
 });
 
+// ---------------- services tabs --------------------
+
+const servicesTabs = document.querySelector(".services-tabs");
+servicesTabs.addEventListener("click", function(e){
+    // Si al hacer clic el nombre clase contiene "services-tab-item" y "active" el resultado de la operación lógica será falso
+    if(e.target.classList.contains("services-tab-item") && !e.target.classList.contains("active")){
+        const target = e.target.getAttribute("data-target");
+        // Se remueve la clase active de todos los elementos .active
+        servicesTabs.querySelector(".active").classList.remove("active");
+        // Se añade la clase active al objeto que tiene el foco al hacer clic
+        e.target.classList.add("active");
+        const servicesSection = document.querySelector(".services-section");
+        servicesSection.querySelector(".services-tab-content.active").classList.remove("active");
+        servicesSection.querySelector(target).classList.add("active");
+    }
+});
+
