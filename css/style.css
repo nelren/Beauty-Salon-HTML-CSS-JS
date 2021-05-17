@@ -509,7 +509,7 @@ header
     left: 15px;
     right: 15px;
     bottom: 0;
-    border-bottom: 2px dashed  var(--clr-white);
+    border-bottom: 0.3px dashed  var(--clr-white-light);
 }
 
 .menu-item:nth-last-of-type(2)::after,
@@ -549,4 +549,58 @@ header
 /* Cuando el mouse pase por el contenedor del precio, el color del precio cambiara a blanco */
 .services-item:hover .services-item-price{
     color: var(--clr-white);
+}
+
+.testimonials-section{
+    background-color: var(--clr-dark);
+    padding-bottom: 50px;
+}
+
+.testi-item{
+    width: calc((100% / 3) - 30px);
+    margin: 0 15px 30px;
+    border: 2px solid var(--clr-dark-light);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.testi-author{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.testi-author h3{
+    font-size: 16px;
+    text-transform: capitalize;
+    margin: 0 0 30px;
+}
+
+.testi-author span{
+    display: block;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+/*Definir el tamaño de la imagen y darle la forma de*/
+.testi-author img{
+    max-width: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--clr-dark-light);
+    box-shadow: var(--shadow);
+    transition: border-color 0.5s ease;
+}
+
+.testi-item:hover .testi-author img{
+    border-color: var(--main-color);
+}
+
+.testi-item p{
+    margin: 15px 0;
+}
+
+.testi-item .ratings i{
+    font-size: 16px;
+    color: var(--main-color);
 }
