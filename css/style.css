@@ -550,3 +550,30 @@ header
 .services-item:hover .services-item-price{
     color: var(--clr-white);
 }
+/* 
+------------------------------ 
+Opinions Section
+------------------------------
+ */
+
+/*Definir el tamaño de la imagen y darle la forma de*/
+.testi-author img{
+    max-width: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--clr-dark-light);
+    box-shadow: var(--shadow);
+    transition: border-color 0.5s ease;
+}
+
+.testi-item:hover .testi-author img{
+    border-color: var(--main-color);
+}
+
+.testi-item p{
+    margin: 15px 0;
+}
+
+.testi-item .ratings i{
+    font-size: 16px;
+    color: var(--main-color);
+}
