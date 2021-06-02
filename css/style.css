@@ -556,6 +556,38 @@ Opinions Section
 ------------------------------
  */
 
+ .testimonials-section{
+     background-color: var(--clr-dark);
+     padding-bottom: 50px;
+ }
+
+.testi-item{
+    width: calc((100% / 3) - 30px);
+    margin: 0 15px 30px;
+    border: 2px solid var(--clr-dark-light);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.testi-author{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.testi-author h3{
+    font-size: 16px;
+    text-transform: capitalize;
+    margin: 0 0 3px;
+}
+
+.testi-author span{
+    display: block;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
 /*Definir el tamaño de la imagen y darle la forma de*/
 .testi-author img{
     max-width: 100px;
@@ -577,3 +609,67 @@ Opinions Section
     font-size: 16px;
     color: var(--main-color);
 }
+
+/* -----------------------------
+Team Section 
+-------------------------------*/
+
+.team-section{
+    background-color: var(--clr-dark);
+    padding-bottom: 125px;
+}
+
+.team-item{
+    width: calc(100% / 3);
+    padding: 0 15px;
+    position: relative;
+}
+
+.team-item img{
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.team-item:hover img{
+    transform:  skewY(1deg);
+}
+
+.team-item-info{
+    background-color: var(--clr-dark-light);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    /*Con esto se reduce el tamaño del contenedor de la info del*/
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    /*Se sobrepone en la parte inferior de la imagen*/
+    bottom: 0;
+    /*Desde su posición inicial el contenedor baja hasta la */
+    transform: translateY(50%);
+    /* Transition permite que el efecto de los elementos de este contenedor tenga un movimiento de deslizamiento */
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.team-item:hover .team-item-info{
+    transform: translateY(-15px);
+    background-color: var(--main-color);
+    color: var(--clr-dark-light);
+}
+
+.team-item-info h3{
+    font-size: 18px;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+}
+
+.team-item-info p{
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+/* .team-item:hover .team-item-info p{
+    color: var(--clr-white);
+}  */
