@@ -317,7 +317,9 @@ header
     color: var(--main-color);
 }
 
-/* home-section */
+/* --------------------------------
+home-section
+----------------------------------- */
 
 .home-section{
     position: relative;
@@ -344,9 +346,10 @@ header
     height: 100%;
     width: 100%;
     background-image: url('../img/home-bg2.jpeg');
+    background-repeat: none;
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
-    background-position: right;
     z-index: -2;
     /* El zoomInOut es el keyframe denifinido arriba */
     animation: zoomInOut 20s ease infinite;
@@ -744,4 +747,74 @@ footer
     font-size: 14px;
     border-top: 1px solid var(--clr-white-light);
     margin: 30px;
+}
+
+/*------------------------------
+Responsive
+--------------------------------*/
+
+@media(max-width:991px){
+    
+    .header .nav ul li a{
+        font-size: 20px;
+    }
+
+    .testi-item{
+        width: calc(50% - 30px);
+    }
+
+    .team-item{
+        width: 50%;
+        /* margin-bottom: 75px; */
+    }
+
+    /* The style apply to all elements that have "team-item" name except the last one */
+    .team-item:not(:last-child){
+        margin-bottom: 75px;
+    }
+}
+
+@media(max-width:767px){
+
+    .header .nav ul li a{
+        font-size: 15px;
+    }
+
+    .home-text h1{
+       font-size: 50px;
+        line-height: 65px; 
+    }
+    
+    .services-item,
+    .about-text, 
+    .about-img{
+        width: 100%;
+    }
+
+    .services-item::after{
+        border-bottom: 2px dashed var(--clr-dark-light);
+    }
+
+    .about-text h3{
+        font-size: 24px;
+    }
+
+    .footer-item{
+        width: 100%;
+    }
+
+    .footer-item:not(:last-child){
+        margin-bottom: 30px;
+    }
+
+    .testi-item{
+        width: calc(100% - 30px);
+    }
+}
+
+@media(max-width:575px){
+    .team-item{
+        width: 100%;
+        /* margin-bottom: 75px; */
+    }
 }
