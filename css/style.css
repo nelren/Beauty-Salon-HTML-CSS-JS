@@ -101,6 +101,10 @@ h6{
     padding: 80px 0;
 }
 
+section{
+    overflow: hidden;
+}
+
 /* section title */
 
 .section-title{
