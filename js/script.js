@@ -1,3 +1,12 @@
+/*----------------------------------
+Animations
+-----------------------------------*/
+
+window.addEventListener("load", function(){
+    /* Animation on scroll */
+    AOS.init();
+});
+
 
 // -------------------- toggle navbar -------------------
 const navToggler = document.querySelector(".nav-toggler");
@@ -39,6 +48,8 @@ servicesTabs.addEventListener("click", function(e){
         const servicesSection = document.querySelector(".services-section");
         servicesSection.querySelector(".services-tab-content.active").classList.remove("active");
         servicesSection.querySelector(target).classList.add("active");
+        //Animation on Services
+        AOS.init();
     }
 });
 
